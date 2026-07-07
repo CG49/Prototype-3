@@ -3,11 +3,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     private bool isOnGround = true;
     private bool isGameOver;
+    private Animator playerAnim;
 
     [SerializeField] private float jumpForce = 50f;
 
@@ -17,6 +19,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         playerRb = GetComponent<Rigidbody>();
+        playerAnim = GetComponent<Animator>();
     }
 
     void OnEnable()
@@ -43,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
         playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isOnGround = false;
+
+        playerAnim.SetTrigger("Jump_trig");
     }
 
     void OnCollisionEnter(Collision collision)
@@ -59,6 +64,9 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game Over!!!");
 
             OnGameOver?.Invoke();
+
+            playerAnim.SetBool("Death_b", true);
+            playerAnim.SetInteger("DeathType_int", 1);
         }
     }
 }
