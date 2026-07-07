@@ -5,13 +5,24 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     private readonly float startDelay = 2f;
-    private Vector3 spawnPos = new Vector3(-12, 0, -3);
+    private Vector3 spawnPos = new Vector3(-19, 0, -2.5f);
 
     public GameObject obstaclePrefab;
+    private Coroutine spawnCoroutine;
+
+    private void OnEnable()
+    {
+        PlayerController.OnGameOver += StopSpawning;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.OnGameOver -= StopSpawning;
+    }
 
     void Start()
     {
-        StartCoroutine(SpawnLoop());
+        spawnCoroutine  = StartCoroutine(SpawnLoop());
     }
 
     IEnumerator SpawnLoop()
@@ -29,5 +40,13 @@ public class SpawnManager : MonoBehaviour
     void SpawnObstacle()
     {
         Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
+    }
+
+    private void StopSpawning()
+    {
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+        }
     }
 }

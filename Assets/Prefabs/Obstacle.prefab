@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7475708948505516033}
   m_Layer: 0
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3198762829895040639}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28, y: 0, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.80836296, y: 2.0100458, z: 3.2891996}
-  m_Center: {x: -0.0058374405, y: 0.9667431, z: -0.0011130571}
+  m_Size: {x: 0.29322612, y: 1.6773021, z: 3.141074}
+  m_Center: {x: -0.046934128, y: 0.847906, z: -0.00073206425}
 --- !u!114 &7475708948505516033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveLeft
   speed: 5
+  leftBound: -57
 --- !u!1 &4488644769495313076
 GameObject:
   m_ObjectHideFlags: 0

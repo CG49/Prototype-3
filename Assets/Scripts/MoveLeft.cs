@@ -2,10 +2,31 @@ using UnityEngine;
 
 public class MoveLeft : MonoBehaviour
 {
-    public float speed = 20f;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float leftBound = -57f;
+
+    private void OnEnable()
+    {
+        PlayerController.OnGameOver += StopMoving;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.OnGameOver -= StopMoving;
+    }
 
     void Update()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * speed);
+        transform.Translate(speed * Time.deltaTime * Vector3.left, Space.World);
+
+        if (gameObject.CompareTag("Obstacle") && transform.position.x < leftBound)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void StopMoving()
+    {
+        enabled = false;
     }
 }

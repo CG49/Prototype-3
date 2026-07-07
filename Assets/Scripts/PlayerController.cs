@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,10 +6,13 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    public float jumpForce = 50f;
     private bool isOnGround = true;
+    private bool isGameOver;
+
+    [SerializeField] private float jumpForce = 50f;
 
     public InputAction jumpAction;
+    public static event Action OnGameOver;
 
     void Awake()
     {
@@ -35,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     void OnJump(InputAction.CallbackContext context)
     {
-        if (!isOnGround) return;
+        if (!isOnGround || isGameOver) return;
 
         playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isOnGround = false;
@@ -43,9 +47,18 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (isGameOver)
+            return;
+
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
+        } else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            isGameOver = true;
+            Debug.Log("Game Over!!!");
+
+            OnGameOver?.Invoke();
         }
     }
 }
