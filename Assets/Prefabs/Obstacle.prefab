@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1148497614308968934}
   - component: {fileID: 5215646105013109514}
   - component: {fileID: 7475708948505516033}
+  - component: {fileID: 7304201163112420204}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -69,6 +70,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveLeft
   speed: 5
   leftBound: -57
+--- !u!54 &7304201163112420204
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3198762829895040639}
+  serializedVersion: 5
+  m_Mass: 0.8
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4488644769495313076
 GameObject:
   m_ObjectHideFlags: 0
