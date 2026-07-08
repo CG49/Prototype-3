@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     private readonly float startDelay = 2f;
-    private Vector3 spawnPos = new Vector3(-19, 0, -2.5f);
+    private Vector3 spawnPos = new Vector3(-19, 0, -3f);
 
     public GameObject obstaclePrefab;
     private Coroutine spawnCoroutine;

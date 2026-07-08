@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72d7f0b54a01a141970ed8e8e26de97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveLeft
-  speed: 5
+  speed: 9
   leftBound: -57
 --- !u!54 &7304201163112420204
 Rigidbody:
